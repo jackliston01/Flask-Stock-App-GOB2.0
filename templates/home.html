@@ -1,0 +1,20 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOB 2.0 - LBHS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+   
+</head>
+<body>
+    <h1 id="main-title">GOB 2.0 - LBHS</h1>
+    <h1>Enter Stock Ticker</h1>
+    <form method="post">
+        <input type="text" name="ticker" placeholder="Enter stock ticker" required>
+        <button type="submit">Get Stock Info</button>
+    </form>
+</body>
+</html>

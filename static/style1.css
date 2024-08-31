@@ -1,0 +1,83 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #131621;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #88b9da;
+        }
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        .stock-info {
+            width: 30%;
+            background-color: #334957;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .news {
+            width: 65%;
+            background-color: #334957;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .price {
+            font-size: 24px;
+            color: #14140d;
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            background-color: #58809b;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 217, 255, 0.1);
+            margin-bottom: 10px;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+        .info-value {
+            color: #000000;
+        }
+        .news-item {
+            margin-bottom: 20px;
+        }
+        .news-item h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #000000;
+        }
+        .news-item p {
+            margin: 5px 0;
+            color: #333;
+        }
+        a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+        td {
+            text-align: right;
+        }
