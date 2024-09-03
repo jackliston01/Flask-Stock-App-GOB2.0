@@ -1,9 +1,18 @@
 # stock_utils.py
-
+import google.generativeai as genai
+import os
 import yfinance as yf
 
+genai.configure(api_key=os.environ["gemapi"])
 
+model = genai.GenerativeModel("gemini-1.5-flash")
 
+def format_text(text):
+    # Replace *word* with <strong>word</strong>
+    while '*' in text:
+        text = text.replace('*', '<strong>', 1)
+        text = text.replace('*', '</strong>', 1)
+    return text
 
 def format_large_number(number):
     if number >= 1_000_000_000:
@@ -39,6 +48,16 @@ def get_stock_details(ticker):
 
         news = stock.news if hasattr(stock, 'news') else []
 
+
+        airesponse = model.generate_content(f'Summarize the company in 2 sentences using only objective language. Then provide an analysis of risk (audit risk. board risk, etc) using the actual concrete numbers provided. One sentence about performance using concrete numbers. And anything else UNIQUELY interesting given the info (must be objective and sourced from the info) This part should use some analysis {stock.info}')
+        airesponse = airesponse.text
+        airesponse = airesponse.replace('\n', '<br>')
+        airesponse = format_text(airesponse)
+
+
+        
+
+
         return {
             'ticker': ticker,
             'name': info.get('shortName', ticker),
@@ -52,7 +71,8 @@ def get_stock_details(ticker):
             'dividends': dividends_str,
             'history': history_str,
             'news': news,
-            'dividend': dividend_percentage
+            'dividend': dividend_percentage,
+            'ai_response': airesponse
         }
     except Exception as e:
     

@@ -142,8 +142,12 @@
 {% else %}
     <p>No historical data available.</p>
 {% endif %}
+<h1>AI Evaluation</h1>
+    <p>{{ stock_data.ai_response|safe }}</p>
 
     
     <a href="{{ url_for('home') }}">Back to Home</a>
+
+    
 </body>
 </html>

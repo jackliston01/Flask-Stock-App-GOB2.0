@@ -7,9 +7,15 @@
     <title>GOB 2.0 - LBHS</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     
-   
 </head>
 <body>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('docanalysis') }}">Doc Analyzer</a>
+    </nav>
+
+
     <h1 id="main-title">GOB 2.0 - LBHS</h1>
     <h1>Enter Stock Ticker</h1>
     <form method="post">

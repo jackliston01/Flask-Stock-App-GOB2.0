@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, flash
 
 
 from stock_utils import get_stock_details
@@ -6,6 +6,9 @@ from stock_utils import get_stock_details
 
 
 app = Flask(__name__)
+
+
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -17,8 +20,13 @@ def home():
     except Exception as e:
         return "An error occurred", 500
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
-
+@app.route('/docanalysis')
+def docanalysis():
+    return render_template('docanalysis.html')
 
 
 @app.route('/<ticker>')
