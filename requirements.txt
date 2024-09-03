@@ -1,3 +1,5 @@
 flask
 yfinance
 gunicorn
+google.generativeai
+os
