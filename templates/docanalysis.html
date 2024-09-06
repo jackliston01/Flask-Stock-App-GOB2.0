@@ -13,17 +13,33 @@
         <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
     </nav>
 
-    <header>
-        <h1>Analyze Documents</h1>
-    </header>
-    
-    <main>
-        <p>Have a earnings call/quarterly transcript, research paper regarding a company, or just a document you want to analyze? Upload it here! Please note that the document must be in PDF format. Also I would appreciate that any file sizes are relatively small and as few pages as possible.</p>
+    <div class="container">
+        <h1>Upload a PDF to Summarize</h1>
 
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="pdf_file" accept=".pdf" required>
-            <button type="submit">Upload</button>
+        <form action="{{ url_for('docanalysis') }}" method="POST" enctype="multipart/form-data">
+            <div class="file-input-wrapper">
+                <input type="file" name="file" id="file" accept="application/pdf" required>
+                <label for="file">Choose a PDF file</label>
+            </div>
+            <div class="file-name" id="file-name"></div>
+            <button type="submit">Upload and Summarize</button>
         </form>
-    </main>
+
+        {% if summary %}
+            <div class="summary-container">
+                <h2>Document Summary</h2>
+                <div class="summary-content">
+                    {{ summary | safe }}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('file').addEventListener('change', function() {
+            var fileName = this.files[0].name;
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
 </body>
 </html>

@@ -12,43 +12,106 @@
               display: flex;
               flex-direction: column;
               align-items: center;
-          }          h1 {
-              color: #88b9da;
-              font-size: 48px;
-              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-              padding-top: 20px;
+              color: #ffffff;
           }
 
-          input[type="text"] {
-              padding: 10px;
-              font-size: 16px;
-              margin-top: 10px;
+          .container {
+              width: 80%;
+              max-width: 800px;
+              margin-top: 100px;
               text-align: center;
           }
 
-          button {
-              background-color: #88b9da;
-              color: #131621;
-              border: none;
-              padding: 10px 20px;
-              font-size: 16px;
-              border-radius: 25px;
-              cursor: pointer;
-              transition: all 0.3s ease;
-          }
-
-          button:hover {
-              background-color: #a0c5e0;
-              transform: translateY(-2px);
-              box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-          }
-
-          #main-title {
+          h1 {
               color: #88b9da;
-              font-size: 60px;
-              padding-bottom: 300px;
-              padding-top: 50px;
-              font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+              font-size: 36px;
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+              margin-bottom: 30px;
+          }
+
+          h2 {
+              color: #88b9da;
+              font-size: 24px;
+              margin-top: 40px;
+          }
+
+          form {
+              background-color: rgba(255, 255, 255, 0.1);
+              padding: 30px;
+              border-radius: 10px;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          }
+            .file-input-wrapper {
+                position: relative;
+                overflow: hidden;
+                display: inline-block;
+                margin-bottom: 10px;
+            }
+
+            .file-input-wrapper input[type=file] {
+                font-size: 100px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+            .file-input-wrapper label {
+                background-color: #88b9da;
+                color: #131621;
+                padding: 10px 20px;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+
+            .file-input-wrapper label:hover {
+                background-color: #a0c5e0;
+            }
+
+            .file-name {
+                color: #88b9da;
+                margin-bottom: 10px;
+                min-height: 20px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                background-color: #88b9da;
+                color: #131621;
+                border: none;
+                padding: 10px 20px;
+                font-size: 16px;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 10px;
+            }
+
+            button:hover {
+                background-color: #a0c5e0;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .summary-container {
+                background-color: rgba(255, 255, 255, 0.1);
+                padding: 30px;
+                border-radius: 10px;
+                margin-top: 40px;
+                text-align: left;
+            }
+
+          .summary-content {
+              white-space: pre-wrap;
+              line-height: 1.6;
           }
 
           nav {
@@ -77,8 +140,3 @@
               background-color: #88b9da;
               color: #131621;
           }
-
-          p {
-              color: #ffffff;
-          }
-

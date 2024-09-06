@@ -1,8 +1,10 @@
 from flask import Flask, request, render_template, redirect, url_for, flash
-
+import google.generativeai as genai
+import os
 
 from stock_utils import get_stock_details
 
+genai.configure(api_key=os.environ['gemapi'])
 
 
 app = Flask(__name__)
@@ -24,11 +26,27 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/docanalysis')
+@app.route('/docanalysis', methods=['GET', 'POST'])
 def docanalysis():
-    return render_template('docanalysis.html')
+    summary = None
 
+    if request.method == 'POST':
+        file = request.files['file']
+        if file:
+            file.save(file.filename)
+            
+            try:
+                sample_file = genai.upload_file(path=file.filename, display_name="Gemini PDF")
+                
+                model = genai.GenerativeModel(model_name="gemini-1.5-flash")
+                response = model.generate_content([sample_file, "Can you summarize this document as a bulleted list?"])
+                
+                summary = response.text.replace('\n', '<br>')  # Convert newlines to HTML line breaks
 
+            except Exception as e:
+                summary = f"An error occurred: {str(e)}"
+
+    return render_template('docanalysis.html', summary=summary)
 @app.route('/<ticker>')
 def show_price(ticker):
     stock_data = get_stock_details(ticker)
