@@ -34,8 +34,6 @@ header h1 {
 
 /* About Section Styling */
 .about-container {
-    display: flex;
-    flex-wrap: wrap;
     max-width: 1200px;
     margin: 2rem auto;
     padding: 2rem;
@@ -44,29 +42,73 @@ header h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.about-image {
-    flex: 1 1 300px;
-    padding: 1rem;
+.about-intro {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
 }
 
-.about-image img {
+.intro-image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 2rem;
+}
+
+.intro-text {
+    flex: 1;
+}
+
+.about-engine {
+    margin-bottom: 2rem;
+}
+
+.website-screenshot {
     width: 100%;
     height: auto;
     border-radius: 10px;
+    margin-top: 1rem;
 }
 
-.about-text {
-    flex: 2 1 600px;
-    padding: 1rem;
+.feature-list, .upcoming-features {
+    margin-bottom: 2rem;
 }
 
-.about-text h2 {
+.feature-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+  .feature-list li {
+      margin-bottom: 1.5rem;
+  }
+
+  h2 {
+      color: #a0c5e0;
+      font-size: 28px;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #88b9da;
+      padding-bottom: 0.5rem;
+  }
+
+  .feature-list h3 {
+      color: #88b9da;
+      font-size: 22px;
+      margin-bottom: 0.5rem;
+  }
+
+.feature-list ul ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+h2 {
     color: #88b9da;
     margin-bottom: 1rem;
 }
 
-.about-text p {
-    margin-bottom: 1.5rem;
+p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 nav {
@@ -94,4 +136,93 @@ nav a {
 nav a:hover, nav a.active {
     background-color: #88b9da;
     color: #131621;
+}
+/* Add these styles to your existing style2.css file */
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info, .contact-form {
+    flex: 1 1 300px;
+    padding: 1rem;
+}
+
+.contact-info h2, .contact-form h2 {
+    color: #88b9da;
+    margin-bottom: 1rem;
+}
+
+.contact-info p, .contact-info ul {
+    margin-bottom: 1.5rem;
+}
+
+.contact-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-info li {
+    margin-bottom: 0.5rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #88b9da;
+    color: #131621;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #a0c5e0;
+    transform: translateY(-2px);
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input, .contact-form textarea {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.contact-form button {
+    background-color: #88b9da;
+    color: #131621;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.contact-form button:hover {
+    background-color: #a0c5e0;
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    background-color: rgba(19, 22, 33, 0.8);
+    width: 100%;
 }

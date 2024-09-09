@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, flash
+from flask import Flask, request, render_template, redirect, url_for, flash, send_from_directory
 import google.generativeai as genai
 import os
 
@@ -45,6 +45,9 @@ def docanalysis():
 
             except Exception as e:
                 summary = f"An error occurred: {str(e)}"
+    
+    return render_template('docanalysis.html', summary=summary)
+
 
     return render_template('docanalysis.html', summary=summary)
 @app.route('/<ticker>')
@@ -55,9 +58,35 @@ def show_price(ticker):
                            stock_data=stock_data, 
                            news=stock_data.get('news', []),
                            history=stock_data.get('history', {}))
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route('/favicon.ico')
 def favicon():
-    return '', 204
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+@app.route('/apple-touch-icon.png')
+def apple_touch_icon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'apple-touch-icon.png', mimetype='image/png')
+
+@app.route('/favicon-32x32.png')
+def favicon_32():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon-32x32.png', mimetype='image/png')
+
+@app.route('/favicon-16x16.png')
+def favicon_16():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon-16x16.png', mimetype='image/png')
+
+@app.route('/site.webmanifest')
+def site_webmanifest():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'site.webmanifest', mimetype='application/json')
 
 
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=8080, debug=True)

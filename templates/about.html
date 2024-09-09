@@ -3,31 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About Us - GOB 2.0 LBHS</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
 </head>
 <body>
     <nav>
         <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
         <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
         <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
+        <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
     </nav>
-
     <header>
-        <h1>About Us</h1>
+        <h1>About GOB 2.0</h1>
     </header>
-    <section class="about-container">
-        <div class="about-image">
-            <img src="{{ url_for('static', filename='images/9099-walter-white.jpg') }}" alt="About Image">
-        </div>
-        <div class="about-text">
-            <h2>Our Mission</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
-            <h2>Our Team</h2>
-            <p>Suspendisse faucibus. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            <h2>Our Vision</h2>
-            <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor.</p>
-        </div>
-    </section>
+    <main class="about-container">
+        <section class="about-intro">
+            <img src="{{ url_for('static', filename='images/9099-walter-white.jpg') }}" alt="About Image" class="intro-image">
+            <div class="intro-text">
+                <h2>Who we are</h2>
+                <p>placeholder</p>
+                <h2>GOB: Green or Bust</h2>
+                <p>GOB stands for "Green or Bust." Naturally, green is a direct reference to profit; however, green also means success. Irrespective of our environment, we, not only as individuals, but as a collective, strive for success which is not always dependent on stock success.</p>
+            </div>
+        </section>
+        
+        <section class="about-engine">
+            <h2>Our Stock Engine</h2>
+            <p>GOB is a multifaceted stock engine that gathers utility and leaves behind unnecessary "fluff". From a ticker overview to a transcript AI summarizer, GOB centralizes one's research onto a single website, increasing efficiency for all.</p>
+            <img src="{{ url_for('static', filename='images/website-screenshot.jpg') }}" alt="Website Screenshot" class="website-screenshot">
+        </section>
+        
+        <section class="feature-list">
+            <h2>Key Features</h2>
+            <ul>
+                <li>
+                    <h3>Ticker Overview</h3>
+                    <p>Stock info all in one place:</p>
+                    <ul>
+                        <li>Stock Price</li>
+                        <li>General Data</li>
+                        <li>Current News</li>
+                        <li>Stock Chart</li>
+                        <li>AI Evaluation</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Transcript Analyzer and Summarizer</h3>
+                    <p>Saves hours of reading monotonous and often unrealistic transcripts/court documents/research publications and more!</p>
+                </li>
+                <li>
+                    <h3>Rapid Development</h3>
+                    <p>GOB has been structured to allow the development and deployment of new tools as quickly as possible.</p>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="upcoming-features">
+            <h2>Upcoming Features</h2>
+            <ul>
+                <li>Sentiment Analysis</li>
+                <li>Tools to facilitate event-based arbitrage</li>
+            </ul>
+        </section>
+    </main>
 </body>
 </html>

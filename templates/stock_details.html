@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ stock_data.name }} Stock Details</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
 </head>
 <body>
+    <nav>
+        <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+        <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
+        <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
+        <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
+    </nav>
     <h1>{{ stock_data.name }} ({{ stock_data.ticker }}) Stock Details</h1>
     
     <div class="content-wrapper">
@@ -117,36 +126,12 @@
 
     
 
-    {% if history %}
-    <h2>Historical Data</h2>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Open</th>
-            <th>High</th>
-            <th>Low</th>
-            <th>Close</th>
-            <th>Volume</th>
-        </tr>
-        {% for date, row in history.items() %}
-        <tr>
-            <td>{{ date }}</td>
-            <td>{{ row.Open }}</td>
-            <td>{{ row.High }}</td>
-            <td>{{ row.Low }}</td>
-            <td>{{ row.Close }}</td>
-            <td>{{ row.Volume }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-{% else %}
-    <p>No historical data available.</p>
-{% endif %}
+    
 <h1>AI Evaluation</h1>
     <p>{{ stock_data.ai_response|safe }}</p>
 
     
-    <a href="{{ url_for('home') }}">Back to Home</a>
+    <a href="{{ url_for('home') }}" class="back-button">Back to Home</a>
 
     
 </body>

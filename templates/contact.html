@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - GOB 2.0 LBHS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+        <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
+        <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
+        <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
+    </nav>
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+
+    <section class="contact-container">
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>Have any questions or just want to reach out? Please email us and we'll get back to you as quickly as possible</p>
+            <ul>
+                <li><strong>Email:</strong> jackliston01@gmail.com and kevinhua2025@gmail.com</li>
+                <li><strong>Phone Number:</strong> (323) 961-3030</li>
+                <li><strong>Address:</strong> 625 Park St. Laguna Beach, CA 92651</li>
+            </ul>
+        </div>
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+ 
+</body>
+</html>

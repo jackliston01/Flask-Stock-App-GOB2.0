@@ -1,8 +1,11 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+<link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
     <title>Document Analysis</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style3.css') }}">
 </head>
@@ -11,10 +14,11 @@
         <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
         <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
         <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
+        <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
     </nav>
-
     <div class="container">
         <h1>Upload a PDF to Summarize</h1>
+    
 
         <form action="{{ url_for('docanalysis') }}" method="POST" enctype="multipart/form-data">
             <div class="file-input-wrapper">
@@ -40,6 +44,26 @@
             var fileName = this.files[0].name;
             document.getElementById('file-name').textContent = fileName;
         });
+    </script>
+</body>
+</html>
+
+    <script>
+        document.getElementById('file').addEventListener('change', function() {
+            var fileName = this.files[0].name;
+            document.getElementById('file-name').textContent = fileName;
+        });
+
+    function showWarning(message) {
+        var warningElement = document.getElementById('warning-message');
+        warningElement.textContent = message;
+        warningElement.style.display = 'block';
+    }
+
+    function hideWarning() {
+        document.getElementById('warning-message').style.display = 'none';
+    }
+
     </script>
 </body>
 </html>

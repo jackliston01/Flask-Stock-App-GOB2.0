@@ -4,6 +4,7 @@
             background-color: #131621;
             margin: 0;
             padding: 20px;
+            padding-top: 50px;
         }
         h1, h2 {
             color: #88b9da;
@@ -84,4 +85,74 @@
         p{
             color: #ffffff;
         }
+        .back-button {
+            display: inline-block;
+            background-color: #88b9da;
+            color: #131621;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
         
+        .back-button:hover {
+            background-color: #a0c5e0;
+            text-decoration: none;
+        }
+        header {
+            margin-top: 80px;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        header h1 {
+            color: #88b9da;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }nav {
+            background-color: rgba(19, 22, 33, 0.8);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+      
+        nav a {
+            color: #88b9da;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+      
+      
+        
+        nav {
+            background-color: rgba(19, 22, 33, 0.8);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        
+        
+        nav a:hover, nav a.active {
+            background-color: #88b9da;
+            color: #131621;
+        }
+        
+      
+      
