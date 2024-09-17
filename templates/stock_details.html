@@ -16,119 +16,137 @@
         <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
         <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
         <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
+        <a href="{{ url_for('sentiment') }}" class="{{ 'active' if request.endpoint == 'sentiment' else '' }}">Sentiment</a>
+
     </nav>
     <h1>{{ stock_data.name }} ({{ stock_data.ticker }}) Stock Details</h1>
-    
-    <div class="content-wrapper">
-        <div class="stock-info">
-            <p class="price">Current Price: ${{ stock_data.current_price }}</p>
+          <div class="content-wrapper">
+              <div class="top-info">
+                  <div class="stock-info">
+                      <p class="price">Current Price: ${{ stock_data.current_price }}</p>
 
-            <div class="info-item">
-                <span class="info-label">Day High:</span>
-                <span class="info-value">${{ stock_data.day_high }}</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Day Low:</span>
-                <span class="info-value">${{ stock_data.day_high }}</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Open:</span>
-                <span class="info-value">${{ stock_data.open }}</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Previous Close:</span>
-                <span class="info-value">${{ stock_data.previous_close }}</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Volume:</span>
-                <span class="info-value">{{ stock_data.volume }}</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Market Cap:</span>
-                <span class="info-value">{{ stock_data.market_cap }}</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Dividends:</span>
-                <span class="info-value">{{ stock_data.dividend }}</span>
-            </div>
-        </div>
-
+                      <div class="info-item">
+                          <span class="info-label">Day High:</span>
+                          <span class="info-value">${{ stock_data.day_high }}</span>
+                      </div>
+                      <div class="info-item">
+                          <span class="info-label">Day Low:</span>
+                          <span class="info-value">${{ stock_data.day_high }}</span>
+                      </div>
+                      <div class="info-item">
+                          <span class="info-label">Open:</span>
+                          <span class="info-value">${{ stock_data.open }}</span>
+                      </div>
+                      <div class="info-item">
+                          <span class="info-label">Previous Close:</span>
+                          <span class="info-value">${{ stock_data.previous_close }}</span>
+                      </div>
+                      <div class="info-item">
+                          <span class="info-label">Volume:</span>
+                          <span class="info-value">{{ stock_data.volume }}</span>
+                      </div>
+                      <div class="info-item">
+                          <span class="info-label">Market Cap:</span>
+                          <span class="info-value">{{ stock_data.market_cap }}</span>
+                      </div>
+                      <div class="info-item">
+                          <span class="info-label">Dividends:</span>
+                          <span class="info-value">{{ stock_data.dividend }}</span>
+                      </div>
+                  </div>
         
+                  <div class="ai-evaluation">
+                      <h2>AI Evaluation</h2>
+                      <div class="info-item">
+                          <p>{{ stock_data.ai_response|safe }}</p>
+                      </div>
+                  </div>
+              </div>
 
-        <div class="news">
-            <h2>Recent News</h2>
-            {% for article in news[:5] %}
-                <div class="news-item">
-                    <h3><a href="{{ article['link'] }}" target="_blank">{{ article['title'] }}</a></h3>
-                    <p>{{ article['provider'] }} - {{ article['publishedAt'] }}</p>
-                    <p>{{ article['summary'] }}</p>
+              <div class="stock-chart">
+                  <!-- Stock chart content -->
+             
+              <div class="tradingview-widget-container" style="margin-top: 20px;">
+                <div id="tradingview-widget"></div>
+                <div class="tradingview-widget-copyright">
+                    <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                        
+                    </a>
                 </div>
-            {% endfor %}
-            {% if not news %}
-                <p>No news available for this stock.</p>
-            {% endif %}
-        </div>
-    </div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                {
+                    "symbols": [
+                        [
+                            "{{ stock_data.ticker }}|1D"
+                        ]
+                    ],
+                    "chartOnly": false,
+                    "width": "100%",
+                    "height": "600",
+                    "locale": "en",
+                    "colorTheme": "dark",
+                    "autosize": true,
+                    "showVolume": false,
+                    "showMA": false,
+                    "hideDateRanges": false,
+                    "hideMarketStatus": false,
+                    "hideSymbolLogo": false,
+                    "scalePosition": "right",
+                    "scaleMode": "Normal",
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                    "fontSize": "10",
+                    "noTimeScale": false,
+                    "valuesTracking": "1",
+                    "changeMode": "price-and-percent",
+                    "chartType": "area",
+                    "maLineColor": "#2962FF",
+                    "maLineWidth": 1,
+                    "maLength": 9,
+                    "headerFontSize": "medium",
+                    "lineWidth": 2,
+                    "lineType": 0,
+                    "dateRanges": [
+                        "1d|1",
+                        "1w|15",
+                        "1m|30",
+                        "3m|60",
+                        "12m|1D",
+                        "60m|1W",
+                        "all|1M"
+                    ]
+                }
+                </script>
+            </div>
+          </div>
 
-    <div class="tradingview-widget-container" style="margin-top: 20px;">
-        <div id="tradingview-widget"></div>
-        <div class="tradingview-widget-copyright">
-            <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
-                
-            </a>
-        </div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        {
-            "symbols": [
-                [
-                    "{{ stock_data.ticker }}|1D"
-                ]
-            ],
-            "chartOnly": false,
-            "width": "100%",
-            "height": "600",
-            "locale": "en",
-            "colorTheme": "dark",
-            "autosize": true,
-            "showVolume": false,
-            "showMA": false,
-            "hideDateRanges": false,
-            "hideMarketStatus": false,
-            "hideSymbolLogo": false,
-            "scalePosition": "right",
-            "scaleMode": "Normal",
-            "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-            "fontSize": "10",
-            "noTimeScale": false,
-            "valuesTracking": "1",
-            "changeMode": "price-and-percent",
-            "chartType": "area",
-            "maLineColor": "#2962FF",
-            "maLineWidth": 1,
-            "maLength": 9,
-            "headerFontSize": "medium",
-            "lineWidth": 2,
-            "lineType": 0,
-            "dateRanges": [
-                "1d|1",
-                "1w|15",
-                "1m|30",
-                "3m|60",
-                "12m|1D",
-                "60m|1W",
-                "all|1M"
-            ]
-        }
-        </script>
-    </div>
-
+              <div class="bottom-info">
+                  <div class="news">
+                      <h2>Recent News</h2>
+                      {% for article in news[:5] %}
+                          <div class="news-item">
+                              <h3><a href="{{ article['link'] }}" target="_blank">{{ article['title'] }}</a></h3>
+                              <p>{{ article['provider'] }} - {{ article['publishedAt'] }}</p>
+                              <p>{{ article['summary'] }}</p>
+                          </div>
+                      {% endfor %}
+                      {% if not news %}
+                          <p>No news available for this stock.</p>
+                      {% endif %}
+                  </div>
+                  
+                  <div class="sentiment-box">
+                      <h3>View Stock Sentiment</h3>
+                      <p>Analyze sentiment for {{ stock_data.ticker }}</p>
+                      <a href="{{ url_for('sentiment', ticker=stock_data.ticker) }}" class="sentiment-button">View Sentiment</a>
+                  </div>
+              </div>
+          </div>
     
 
     
 
     
-<h1>AI Evaluation</h1>
-    <p>{{ stock_data.ai_response|safe }}</p>
+
 
     
     <a href="{{ url_for('home') }}" class="back-button">Back to Home</a>

@@ -16,6 +16,8 @@
         <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
         <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
         <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
+        <a href="{{ url_for('sentiment') }}" class="{{ 'active' if request.endpoint == 'sentiment' else '' }}">Sentiment</a>
+
     </nav>
     <header>
         <h1>About GOB 2.0</h1>
@@ -34,7 +36,7 @@
         <section class="about-engine">
             <h2>Our Stock Engine</h2>
             <p>GOB is a multifaceted stock engine that gathers utility and leaves behind unnecessary "fluff". From a ticker overview to a transcript AI summarizer, GOB centralizes one's research onto a single website, increasing efficiency for all.</p>
-            <img src="{{ url_for('static', filename='images/website-screenshot.jpg') }}" alt="Website Screenshot" class="website-screenshot">
+            <img src="{{ url_for('static', filename='images/website-screenshot.png') }}" alt="Website Screenshot" class="website-screenshot">
         </section>
         
         <section class="feature-list">

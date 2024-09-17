@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAPL News Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashstyle.css') }}">
+
+
+    <style>
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+        <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
+        <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
+        <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
+        <a href="{{ url_for('sentiment') }}" class="{{ 'active' if request.endpoint == 'sentiment' else '' }}">Sentiment</a>
+
+    </nav>
+    <div class="container mt-5">
+        <form method="POST" class="mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" name="ticker" placeholder="Enter ticker symbol" required>
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+        
+        <h1 class="mb-4">News Dashboard</h1>
+        
+        <div class="row">
+            {% for item in news_items %}
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.title }}</h5>
+                            <p class="card-text">{{ item.summary[:200] }}...</p>
+                            <p class="card-text">
+                                <small class="text-muted">Published: <span class="news-date">{{ item.time_published }}</span></small>
+                            </p>
+                            <p class="card-text">
+                                Sentiment: <span class="badge bg-primary badge-{{ item.sentiment.lower().replace(' ', '-') }}">{{ item.sentiment }}</span>
+                                Score: <span class="badge bg-secondary">{{ item.sentiment_score }}</span>
+                                Relevancy:<span class="badge bg-primary badge-relevance-{{ (item.relevance_score | float * 100) | round | int }}">Relevance: {{ item.relevance_score }}</span>
+
+
+                            </p>
+                            <a href="{{ item.url }}" class="btn btn-primary" target="_blank">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+<script>
+    function formatDate(dateString) {
+        const date = new Date(dateString.replace(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})/, '$1-$2-$3T$4:$5:$6'));
+        return date.toLocaleString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric', 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        });
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.news-date').forEach(function(element) {
+            element.textContent = formatDate(element.textContent);
+        });
+    });
+</script>
+
+</html>

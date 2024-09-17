@@ -1,0 +1,214 @@
+/* General body and background styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #121212 50%, #1a1a1a 100%);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 20px;
+    padding-top: 50px;
+    color: #ffffff;
+}
+
+/* Container settings */
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Headings */
+h1, h2 {
+    color: #023671;
+}
+
+/* Spacing helpers */
+.mt-5 {
+    margin-top: 60px;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+/* Input field styles */
+.input-group {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    flex: 1;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-bottom: 2px solid #023671;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    background-color: #023671;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: #034694;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Create a 2-column masonry layout */
+.row {
+    column-count: 2; /* 2 columns */
+    column-gap: 60px; /* Space between columns */
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Ensures cards behave properly inside column-count */
+    margin-bottom: 20px; /* Space between stacked cards */
+    width: 100%; /* Cards take full width of column */
+    break-inside: avoid; /* Prevents cards from breaking between columns */
+    padding: 1.25rem;
+    
+}
+
+/* Title and text styling */
+.card-title {
+    color: #023671;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.text-muted {
+    color: #023671;
+}
+
+/* Badge styles for sentiment info */
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    background-color: #023671;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+    .row {
+        column-count: 1; /* Single column on small screens */
+    }
+}
+
+/* Navigation bar styling */
+nav {
+    background-color: rgba(10, 10, 10, 0.8);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Navigation links */
+nav a {
+    color: #023671;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+nav a:hover, nav a.active {
+    background-color: #023671;
+    color: #ffffff;
+}
+
+.badge-bullish {
+    background-color: #28a745;
+}
+
+.badge-somewhat-bullish {
+    background-color: #5cb85c;
+}
+
+.badge-neutral {
+    background-color: #6c757d;
+}
+
+.badge-somewhat-bearish {
+    background-color: #f0ad4e;
+}
+
+.badge-bearish {
+    background-color: #dc3545;
+}
+
+.badge-relevance-100,
+.badge-relevance-90 {
+    background-color: #28a745;
+}
+
+.badge-relevance-80,
+.badge-relevance-70 {
+    background-color: #5cb85c;
+}
+
+.badge-relevance-60,
+.badge-relevance-50 {
+    background-color: #ffc107;
+}
+
+.badge-relevance-40,
+.badge-relevance-30 {
+    background-color: #f0ad4e;
+}
+
+.badge-relevance-20,
+.badge-relevance-10,
+.badge-relevance-0 {
+    background-color: #dc3545;
+}
