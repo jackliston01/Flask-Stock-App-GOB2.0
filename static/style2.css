@@ -40,12 +40,18 @@ header h1 {
     background-color: #2c2c2c;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 .about-intro {
     display: flex;
     align-items: flex-start;
     margin-bottom: 2rem;
+    grid-column: 1 / -1;
 }
 
 .intro-image {
@@ -57,14 +63,13 @@ header h1 {
 
 .intro-text {
     flex: 1;
-    color: #004ba0;
-
+    color: #ffffff;
 }
 
 .about-engine {
     margin-bottom: 2rem;
-    color: #004ba0;
-
+    color: #ffffff;
+    grid-column: 1 / -1;
 }
 
 .website-screenshot {
@@ -76,15 +81,16 @@ header h1 {
 
 .feature-list, .upcoming-features {
     margin-bottom: 2rem;
-    color: #004ba0;
-
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
 }
 
 .feature-list ul {
     list-style-type: none;
     padding: 0;
-    color: #004ba0;
-
+    color: #ffffff;
 }
 
 .feature-list li {
@@ -93,21 +99,38 @@ header h1 {
 
 h2 {
     color: #023671;
-    font-size: 28px;
-    margin-bottom: 1rem;
+    font-size: 32px;
+    margin-bottom: 1.5rem;
     border-bottom: 2px solid #023671;
     padding-bottom: 0.5rem;
 }
 
 .feature-list h3 {
     color: #023671;
-    font-size: 22px;
-    margin-bottom: 0.5rem;
+    font-size: 24px;
+    margin-bottom: 0.75rem;
 }
 
 .feature-list ul ul {
     padding-left: 1.5rem;
     margin-top: 0.5rem;
+}
+
+.feature-list li, .upcoming-features li {
+    transition: transform 0.3s ease;
+}
+
+.feature-list li:hover, .upcoming-features li:hover {
+    transform: translateX(10px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.about-intro, .about-engine, .feature-list, .upcoming-features {
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
 p {
@@ -162,11 +185,9 @@ nav a:hover, nav a.active {
 
 .contact-info h2, .contact-form h2 {
     color: #004ba0;
-    margin-bottom: 1rem;
 }
 
 .contact-info p, .contact-info ul {
-    margin-bottom: 1.5rem;
     color: #004ba0;
 }
 
@@ -196,43 +217,247 @@ nav a:hover, nav a.active {
     background-color: #034694;
     transform: translateY(-2px);
 }
+  .contact-form form {
+      display: flex;
+      flex-direction: column;
+  }
 
-.contact-form form {
-    display: flex;
-    flex-direction: column;
+  .contact-form label {
+      color: #023671;
+      font-size: 18px;
+      margin-bottom: 0.25rem;
+  }
+
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 2px solid #023671;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-size: 16px;
+      margin-bottom: 1rem;
+  }
+
+  .contact-form input[type="text"]:focus,
+  .contact-form input[type="email"]:focus,
+  .contact-form textarea:focus {
+      outline: none;
+      border-color: #004ba0;
+      box-shadow: 0 0 0 2px rgba(2, 54, 113, 0.2);
+  }
+
+  .contact-form input[type="submit"] {
+      background-color: #023671;
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 0.25rem;
+      transition: background-color 0.3s ease;
+
+  }
+      
+
+  .contact-form input[type="submit"]:hover {
+      background-color: #004ba0;
+  }
+
+  #confirmation-message {
+      background-color: #023671;
+      color: #ffffff;
+      padding: 1rem;
+      border-radius: 4px;
+      text-align: center;
+      margin-top: 1rem;
+  }
+
+  footer {
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+      background-color: #2c2c2c;
+      color: #023671;
+      width: 100%;
+  }
+/* Add these new styles to your existing style2.css file */
+
+.animate-title {
+    animation: slideInFromTop 1s ease-out;
 }
 
-.contact-form input, .contact-form textarea {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
+.animate-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-text {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.animate-text.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-image {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-image.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.animate-list-item {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.animate-list-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@keyframes slideInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add a subtle hover effect to the feature list items */
+.feature-list li:hover, .upcoming-features li:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    color: #000000;
-    border-bottom: 2px solid #023671;
+    transform: translateX(10px);
+    transition: background-color 0.3s ease,
+    
+    transform 0.3s ease;
 }
-
-.contact-form button {
+#confirmation-message {
+    display: none;
     background-color: #023671;
-    color: #c4c7ce;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-
-.contact-form button:hover {
-    background-color: #034694;
-    transform: translateY(-2px);
-}
-
-footer {
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
     text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
-    background-color: #2c2c2c;
-    color: #023671;
-    width: 100%;
+    margin-top: 20px;
+}
+
+
+
+.hamburger {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 36px;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        padding: 10px 15px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links.show {
+        display: block;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px 15px;
+        text-align: left;
+    }
+
+    nav a:hover, nav a.active {
+        background-color: #034694;
+    }
+    .intro-image {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        font-size: 14px;
+    }
+
+    .contact-form input[type="submit"] {
+        width: 100%;
+    }
+
+    .about-engine {
+        display: block;
+        margin-top: 1rem;
+    }
+
+    .about-engine h2 {
+        font-size: 24px;
+    }
+
+    .about-engine p {
+        font-size: 14px;
+    }
+
+    .website-screenshot {
+        width: 100%;
+        height: auto;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    .about-container {
+        padding: 0.5rem;
+    }
+
+    .feature-list, .upcoming-features {
+        padding: 1rem;
+    }
 }

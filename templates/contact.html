@@ -5,16 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - GOB 2.0 LBHS</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <script type="text/javascript">
+        var submitted = false;
+
+        function showConfirmation() {
+            document.getElementById('confirmation-message').style.display = 'block';
+            document.getElementById('contact-form').style.display = 'none';
+            document.addEventListener('DOMContentLoaded', function() {
+    var hamburger = document.querySelector('.hamburger');
+    var navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('show');
+    });
+
+});
+        }
+    </script>
+   
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
-        <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
-        <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
-        <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
-        <a href="{{ url_for('sentiment') }}" class="{{ 'active' if request.endpoint == 'sentiment' else '' }}">Sentiment</a>
-
+        <div class="hamburger">&#9776;</div>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+            <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
+            <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
+            <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
+            <a href="{{ url_for('sentiment') }}" class="{{ 'active' if request.endpoint == 'sentiment' else '' }}">Sentiment</a>
+        </div>
     </nav>
+    
     <header>
         <h1>Contact Us</h1>
     </header>
@@ -31,11 +52,22 @@
         </div>
         <div class="contact-form">
             <h2>Send Us a Message</h2>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
+            <div id="confirmation-message">
+                <h3>Thank you for your message!</h3>
+                <p>We have received your inquiry and will get back to you soon.</p>
+            </div>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {showConfirmation();}"></iframe>
+            <form id="contact-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeSzWUX-EPgYeK40our3badeI5Xxys48aK5v039NXFlvSD67Q/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+                <label>Name</label>
+                <input name="entry.1468034956" type="text" placeholder="Name" required />
+                <br>
+                <label>Email</label>
+                <input name="entry.2079602894" type="email" placeholder="Email" required />
+                <br>
+                <label>Message</label>
+                <input name="entry.1869904114" type="text" placeholder="Message" required />
+                <br>
+                <input type="submit" value="Send" />
             </form>
         </div>
     </section>
@@ -43,3 +75,5 @@
  
 </body>
 </html>
+
+

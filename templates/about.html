@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>About Us - GOB 2.0 LBHS</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
@@ -12,37 +13,37 @@
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
-        <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
-        <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
-        <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
-        <a href="{{ url_for('sentiment') }}" class="{{ 'active' if request.endpoint == 'sentiment' else '' }}">Sentiment</a>
-
+        <div class="hamburger">&#9776;</div>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+            <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a>
+            <a href="{{ url_for('docanalysis') }}" class="{{ 'active' if request.endpoint == 'docanalysis' else '' }}">Doc Analyzer</a>
+            <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
+            <a href="{{ url_for('sentiment') }}" class="{{ 'active' if request.endpoint == 'sentiment' else '' }}">Sentiment</a>
+        </div>
     </nav>
+    
     <header>
-        <h1>About GOB 2.0</h1>
+        <h1 class="animate-title">About GOB 2.0</h1>
     </header>
     <main class="about-container">
-        <section class="about-intro">
-            <img src="{{ url_for('static', filename='images/9099-walter-white.jpg') }}" alt="About Image" class="intro-image">
+        <section class="about-intro animate-section">
             <div class="intro-text">
-                <h2>Who we are</h2>
-                <p>placeholder</p>
-                <h2>GOB: Green or Bust</h2>
-                <p>GOB stands for "Green or Bust." Naturally, green is a direct reference to profit; however, green also means success. Irrespective of our environment, we, not only as individuals, but as a collective, strive for success which is not always dependent on stock success.</p>
+                <h2 class="animate-text">GOB: Green or Bust</h2>
+                <p class="animate-text">GOB stands for "Green or Bust." Naturally, green is a direct reference to profit; however, green also means success. Irrespective of our environment, we, not only as individuals, but as a collective, strive for success which is not always dependent on stock success.</p>
             </div>
         </section>
         
-        <section class="about-engine">
-            <h2>Our Stock Engine</h2>
-            <p>GOB is a multifaceted stock engine that gathers utility and leaves behind unnecessary "fluff". From a ticker overview to a transcript AI summarizer, GOB centralizes one's research onto a single website, increasing efficiency for all.</p>
-            <img src="{{ url_for('static', filename='images/website-screenshot.png') }}" alt="Website Screenshot" class="website-screenshot">
+        <section class="about-engine animate-section">
+            <h2 class="animate-text">Our Stock Engine</h2>
+            <p class="animate-text">GOB is a multifaceted stock engine that gathers utility and leaves behind unnecessary "fluff". From a ticker overview to a transcript AI summarizer, GOB centralizes one's research onto a single website, increasing efficiency for all.</p>
+            <img src="{{ url_for('static', filename='images/website-screenshot.png') }}" alt="Website Screenshot" class="website-screenshot animate-image">
         </section>
         
-        <section class="feature-list">
-            <h2>Key Features</h2>
+        <section class="feature-list animate-section">
+            <h2 class="animate-text">Key Features</h2>
             <ul>
-                <li>
+                <li class="animate-list-item">
                     <h3>Ticker Overview</h3>
                     <p>Stock info all in one place:</p>
                     <ul>
@@ -53,24 +54,55 @@
                         <li>AI Evaluation</li>
                     </ul>
                 </li>
-                <li>
+                <li class="animate-list-item">
                     <h3>Transcript Analyzer and Summarizer</h3>
                     <p>Saves hours of reading monotonous and often unrealistic transcripts/court documents/research publications and more!</p>
                 </li>
-                <li>
+                <li class="animate-list-item">
                     <h3>Rapid Development</h3>
                     <p>GOB has been structured to allow the development and deployment of new tools as quickly as possible.</p>
                 </li>
             </ul>
         </section>
         
-        <section class="upcoming-features">
-            <h2>Upcoming Features</h2>
+        <section class="upcoming-features animate-section">
+            <h2 class="animate-text">Upcoming Features</h2>
             <ul>
-                <li>Sentiment Analysis</li>
-                <li>Tools to facilitate event-based arbitrage</li>
+                <li class="animate-list-item">Sentiment Analysis</li>
+                <li class="animate-list-item">Tools to facilitate event-based arbitrage</li>
             </ul>
         </section>
     </main>
 </body>
+<script>
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    function handleScroll() {
+        const animatedElements = document.querySelectorAll('.animate-section, .animate-text, .animate-image, .animate-list-item');
+        animatedElements.forEach(el => {
+            if (isElementInViewport(el)) {
+                el.classList.add('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('load', handleScroll);
+    document.addEventListener('DOMContentLoaded', function() {
+    var hamburger = document.querySelector('.hamburger');
+    var navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('show');
+    });
+});
+</script>
 </html>
