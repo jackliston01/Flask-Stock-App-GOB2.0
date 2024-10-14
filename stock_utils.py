@@ -52,7 +52,7 @@ def get_stock_details(ticker):
 
         news = stock.news if hasattr(stock, 'news') else []
 
-        aistockinfo = stock.info
+        aistockinfo = stock.info.copy()
 
         keys_to_remove = ['address1',  'zip',  'phone', 'website',  'overallRisk', 'companyOfficers', 'governanceEpochDate', 'compensationAsOfEpochDate', 'irWebsite', 'maxAge', 'priceHint', 'previousClose', 'open', 'dayLow', 'dayHigh', 'regularMarketPreviousClose', 'regularMarketOpen', 'regularMarketDayLow', 'regularMarketDayHigh', 'dividendRate', 'dividendYield', 'exDividendDate', 'payoutRatio', 'fiveYearAvgDividendYield'
 ]

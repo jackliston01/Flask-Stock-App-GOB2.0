@@ -65,31 +65,29 @@ def show_price(ticker):
 
 @app.route('/sentiment', methods=['GET', 'POST'])
 def sentiment():
-    if request.method == 'POST':
-        ticker = request.form.get('ticker', '').upper()
-        if ticker:
-            url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={ticker}&apikey=2E2UKJACTXKS62YA'
-            r = requests.get(url)
-            data = r.json()
-            print(data)
-            
-            news_items = data.get('feed', [])
-            
-            processed_news = []
-            for item in news_items:
-                processed_item = {
-                    'title': item['title'],
-                    'url': item['url'],
-                    'time_published': item['time_published'],
-                    'summary': item['summary'],
-                    'sentiment': item['overall_sentiment_label'],
-                    'sentiment_score': item['overall_sentiment_score'],
-                    'relevance_score': next((ts['relevance_score'] for ts in item['ticker_sentiment'] if ts['ticker'] == ticker), 'N/A')                }
-                print(processed_item)
-                processed_news.append(processed_item)
-                
-            
-            return render_template('sentiment.html', news_items=processed_news, ticker=ticker)
+    ticker = request.args.get('ticker') or request.form.get('ticker')
+    if ticker:
+        ticker = ticker.upper()
+        url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={ticker}&apikey=2E2UKJACTXKS62YA'
+        r = requests.get(url)
+        data = r.json()
+        
+        news_items = data.get('feed', [])
+        
+        processed_news = []
+        for item in news_items:
+            processed_item = {
+                'title': item['title'],
+                'url': item['url'],
+                'time_published': item['time_published'],
+                'summary': item['summary'],
+                'sentiment': item['overall_sentiment_label'],
+                'sentiment_score': item['overall_sentiment_score'],
+                'relevance_score': next((ts['relevance_score'] for ts in item['ticker_sentiment'] if ts['ticker'] == ticker), 'N/A')
+            }
+            processed_news.append(processed_item)
+        
+        return render_template('sentiment.html', news_items=processed_news, ticker=ticker)
     
     return render_template('sentiment.html')
 
