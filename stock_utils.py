@@ -3,9 +3,10 @@ import google.generativeai as genai
 import os
 import yfinance as yf
 
-genai.configure(api_key=os.environ["gemapi"])
+genai.configure(api_key=os.environ['gemapi'])
 
 model = genai.GenerativeModel("gemini-1.5-flash")
+
 
 def format_text(text):
     # Replace *word* with <strong>word</strong>
@@ -25,6 +26,7 @@ def format_large_number(number):
         return f"{number:.3f}"
 
 def get_stock_details(ticker):
+    print(ticker)
     try:
         
         stock = yf.Ticker(ticker)
@@ -35,11 +37,13 @@ def get_stock_details(ticker):
             return {'error': f"No information available for {ticker}"}
         
         current_price = info.get('regularMarketPrice', info.get('previousClose', 'N/A'))
+        print(current_price)
         
         history = stock.history(period="5d")
         history_str = {str(date.date()): {k: round(v, 3) for k, v in row.items()} for date, row in history.iterrows()}
         
         dividends = stock.dividends
+        print (dividends)
         
         dividends_str = {str(date.date()): round(div, 3) for date, div in dividends.items()}
         
@@ -48,10 +52,30 @@ def get_stock_details(ticker):
 
         news = stock.news if hasattr(stock, 'news') else []
 
+        aistockinfo = stock.info
 
-        airesponse = model.generate_content(f'Summarize the company in 2 sentences using only objective language. Then provide an analysis of risk (audit risk. board risk, etc) using the actual concrete numbers provided. One sentence about performance using concrete numbers. And anything else UNIQUELY interesting given the info (must be objective and sourced from the info) This part should use some analysis {stock.info}')
+        keys_to_remove = ['address1',  'zip',  'phone', 'website',  'overallRisk', 'companyOfficers', 'governanceEpochDate', 'compensationAsOfEpochDate', 'irWebsite', 'maxAge', 'priceHint', 'previousClose', 'open', 'dayLow', 'dayHigh', 'regularMarketPreviousClose', 'regularMarketOpen', 'regularMarketDayLow', 'regularMarketDayHigh', 'dividendRate', 'dividendYield', 'exDividendDate', 'payoutRatio', 'fiveYearAvgDividendYield'
+]
+
+        
+        for key in keys_to_remove:
+            if key in aistockinfo:  
+                del aistockinfo[key]
+
+
+        airesponse = model.generate_content(f'Based solely on the provided data, summarize the key performance metrics.valuation, and risks {ticker}. Structure the output neatly, using spacing or "/n" and use DOUBLE asterisks for bolding on each side(ONLY FOR HEADINGS). For this, use colons Include a one or two sentence description of the company and break down key metrics like financial performance, valuation, and risks with brief explanations (e.g., "relatively low" for a low P/E ratio). Ensure the output is clear, factual, and visually organized. Please do not put too many metrics so that it is easy and concise. {aistockinfo}')
+
+
+
         airesponse = airesponse.text
+        print (airesponse)
         airesponse = airesponse.replace('\n', '<br>')
+        airesponse = airesponse.replace('*', '')
+        airesponse = airesponse.replace('#', '')
+        airesponse = airesponse.replace('Risks:', '<b>Risks:</b>')
+        airesponse = airesponse.replace('Financial Performance:', '<b>Financial Performance:</b>')
+        airesponse = airesponse.replace('Valuation:', '<b>Valuation:</b>')
+        airesponse = airesponse.replace('Key Performance Metrics:', '<b>Key Performance Metrics:</b>')
         airesponse = format_text(airesponse)
 
 

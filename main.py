@@ -51,6 +51,8 @@ def docanalysis():
     
     return render_template('docanalysis.html', summary=summary)
 
+  
+
 
 @app.route('/<ticker>')
 def show_price(ticker):
@@ -109,7 +111,6 @@ def apple_touch_icon():
 def favicon_32():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon-32x32.png', mimetype='image/png')
-
 @app.route('/favicon-16x16.png')
 def favicon_16():
     return send_from_directory(os.path.join(app.root_path, 'static'),

@@ -7,16 +7,20 @@ body, h1, h2, p {
 
 /* Body Styling */
 body {
-    background: 
-
-              linear-gradient(135deg, #0a0a0a 0%, #121212 50%, #1a1a1a 100%);
-          background-attachment: fixed;   
+    background: linear-gradient(135deg, #0a0a0a 0%, #121212 50%, #1a1a1a 100%);
+    background-attachment: fixed;   
     color: #fff;
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 80px; /* Adjust this value to match the height of your nav bar */
+}
+
+body.contact-page {
+    padding-top: 0 50px;
+  
 }
 
 /* Header Styling */
@@ -32,19 +36,61 @@ header h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* About Section Styling */
-.about-container {
-    max-width: 1200px;
+.contact-container {
+    max-width: 1100px;
+    width: 100%;
     margin: 2rem auto;
     padding: 2rem;
     background-color: #2c2c2c;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-gap: 2rem;
-    grid-template-columns: 1fr 1fr;
-    font-size: 16px;
-    line-height: 1.8;
+}
+
+.contact-info, .contact-form {
+    flex: 1 1 300px;
+    padding: 1rem;
+}
+
+@media screen and (min-width: 769px) {
+    .contact-info, .contact-form {
+        flex: 0 0 48%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 1160px) {
+    .contact-container {
+        width: 1100px;
+    }
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* About Section Styling */
+.about-container {
+    max-width: 90%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 1200px) {
+    .about-container {
+        max-width: 1100px;
+    }
 }
 
 .about-intro {
@@ -61,7 +107,15 @@ header h1 {
     margin-right: 2rem;
 }
 
-.intro-text {
+.contact-container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}.intro-text {
     flex: 1;
     color: #ffffff;
 }
@@ -164,21 +218,25 @@ nav a:hover, nav a.active {
     background-color: #023671;
     color: #ffffff;
 }   
-
-/* Add these styles to your existing style2.css file */
-
-.contact-container {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
+  .page-container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 15px;
+  }
+    .contact-container {
+    width: 100%;
     margin: 2rem auto;
     padding: 2rem;
     background-color: #2c2c2c;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.contact-info, .contact-form {
+  @media screen and (min-width: 1160px) {
+      .contact-container {
+          width: 1100px;
+      }
+}.contact-info, .contact-form {
     flex: 1 1 300px;
     padding: 1rem;
 }
@@ -220,6 +278,8 @@ nav a:hover, nav a.active {
   .contact-form form {
       display: flex;
       flex-direction: column;
+
+
   }
 
   .contact-form label {
@@ -362,6 +422,7 @@ nav a:hover, nav a.active {
     border-radius: 5px;
     text-align: center;
     margin-top: 20px;
+
 }
 
 
@@ -412,6 +473,7 @@ nav a:hover, nav a.active {
     nav a:hover, nav a.active {
         background-color: #034694;
     }
+
     .intro-image {
         width: 100%;
         margin-right: 0;
@@ -431,20 +493,50 @@ nav a:hover, nav a.active {
     .about-engine {
         display: block;
         margin-top: 1rem;
+        padding: 1rem;
+        background-color: rgba(44, 44, 44, 0.9);
+        border-radius: 5px;
     }
 
     .about-engine h2 {
-        font-size: 24px;
+        font-size: 20px;
+        margin-bottom: 0.5rem;
     }
 
     .about-engine p {
         font-size: 14px;
+        line-height: 1.4;
     }
 
     .website-screenshot {
         width: 100%;
         height: auto;
         margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-intro {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .intro-text {
+        position: relative;
+        z-index: 2;
+        background-color: rgba(44, 44, 44, 0.9);
+        padding: 1rem;
+        border-radius: 5px;
+    }
+
+    .intro-text h2 {
+        font-size: 20px;
+        margin-bottom: 0.5rem;
+    }
+
+    .intro-text p {
+        font-size: 14px;
+        line-height: 1.4;
     }
 }
 

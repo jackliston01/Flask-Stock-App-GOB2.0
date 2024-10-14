@@ -142,11 +142,16 @@
             border-radius: 25px;
             transition: all 0.3s ease;
             font-weight: bold;
+            transition: all 0.3s ease;
+
         }
 
         nav a:hover, nav a.active {
             background-color: #023671;
             color: #ffffff;
+            text-decoration: none;
+
+            
         }   
         .ai-evaluation {
             width: 65%;

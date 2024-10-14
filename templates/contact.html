@@ -11,20 +11,18 @@
         function showConfirmation() {
             document.getElementById('confirmation-message').style.display = 'block';
             document.getElementById('contact-form').style.display = 'none';
-            document.addEventListener('DOMContentLoaded', function() {
-    var hamburger = document.querySelector('.hamburger');
-    var navLinks = document.querySelector('.nav-links');
 
-    hamburger.addEventListener('click', function() {
-        navLinks.classList.toggle('show');
-    });
 
-});
-        }
+
+}
+    
     </script>
    
 </head>
-<body>
+<body class="contact-page">
+    <div class="page-container">
+
+
     <nav>
         <div class="hamburger">&#9776;</div>
         <div class="nav-links">
@@ -36,9 +34,7 @@
         </div>
     </nav>
     
-    <header>
-        <h1>Contact Us</h1>
-    </header>
+   
 
     <section class="contact-container">
         <div class="contact-info">
@@ -72,8 +68,19 @@
         </div>
     </section>
 
- 
+</div>
+
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var hamburger = document.querySelector('.hamburger');
+        var navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+        });
+    });
+</script>
 </html>
 
 
