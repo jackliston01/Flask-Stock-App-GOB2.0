@@ -1,8 +1,8 @@
           body {
               font-family: Arial, sans-serif;
-              background: 
+              background: #21252e;
 
-                  linear-gradient(135deg, #0a0a0a 0%, #121212 50%, #1a1a1a 100%);
+                  
               background-attachment: fixed;
               margin: 0;
               padding: 0;
@@ -14,7 +14,7 @@
               min-height: 100vh;
           }
           h1 {
-              color: #023671;
+              color: #f2f2f5;
               margin-top: 20px;
               text-align: center;
           }
@@ -34,7 +34,7 @@
           input[type="text"] {
               background-color: rgba(255, 255, 255, 0.1);
               border: none;
-              border-bottom: 2px solid #023671;
+              border-bottom: 2px solid #f2f2f5;
               color: #fff;
               transition: all 0.3s ease;
           }
@@ -44,7 +44,7 @@
           }
           button {
               border-radius: 5%;
-              background-color: #023671;
+              background-color: #02428b;
               color: #ffffff;
               font-weight: bold;
               transition: all 0.3s ease;
@@ -53,20 +53,20 @@
               cursor: pointer;
           }
           button:hover {
-              background-color: #034694;
+              background-color: #0c5ab3;
               transform: translateY(-2px);
               box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
           }
           #main-title {
               font-size: 72px;
-              color: #023671;
+              color: #f2f2f5;
               text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
               margin-bottom: 20px;
           }
 
           h1:not(#main-title) {
               font-size: 24px;
-              color: #023671;
+              color: #f2f2f5;
               margin-bottom: 20px;
           }
           nav {
@@ -81,17 +81,17 @@
               backdrop-filter: blur(10px);
           }
             nav a {
-                color: #023671;
+                color: #f2f2f5;
                 text-decoration: none;
                 padding: 10px 20px;
                 margin: 0 5px;
-                border-radius: 25px;
+                border-radius: 5px;
                 transition: all 0.3s ease;
                 font-weight: bold;
             }
 
             nav a:hover, nav a.active {
-                background-color: #023671;
+                background-color: #02428b;
                 color: #ffffff;
             }
              

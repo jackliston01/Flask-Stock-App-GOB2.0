@@ -1,7 +1,7 @@
 /* General body and background styles */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0a0a0a 0%, #121212 50%, #1a1a1a 100%);
+    background: #21252e;
     background-attachment: fixed;
     margin: 0;
     padding: 20px;
@@ -19,7 +19,7 @@ body {
 
 /* Headings */
 h1, h2 {
-    color: #023671;
+    color: #ffffff;
 }
 
 /* Spacing helpers */
@@ -42,16 +42,16 @@ h1, h2 {
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.1);
+    color: #ececec;
+    background-color:#21252e;
     border: none;
-    border-bottom: 2px solid #023671;
+    border-bottom: 2px solid #02428b;
     border-radius: 0.25rem;
     transition: all 0.3s ease;
 }
 
 .form-control:focus {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #21252e;
     outline: none;
 }
 
@@ -68,7 +68,7 @@ h1, h2 {
     border-radius: 0.25rem;
     transition: all 0.3s ease;
     text-decoration: none;
-    background-color: #023671;
+    background-color: #02428b;
     color: #ffffff;
     border: none;
     cursor: pointer;
@@ -76,7 +76,7 @@ h1, h2 {
 }
 
 .btn:hover {
-    background-color: #034694;
+    background-color: #084d9c;
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
@@ -88,7 +88,7 @@ h1, h2 {
 }
 
 .card {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: inline-block; /* Ensures cards behave properly inside column-count */
@@ -101,18 +101,18 @@ h1, h2 {
 
 /* Title and text styling */
 .card-title {
-    color: #023671;
+    color: #000000;
     font-size: 1.25rem;
     margin-bottom: 0.75rem;
 }
 
 .card-text {
-    color: #ffffff;
+    color: #000000;
     margin-bottom: 1rem;
 }
 
 .text-muted {
-    color: #023671;
+    color: #ffffff;
 }
 
 /* Badge styles for sentiment info */
@@ -126,7 +126,7 @@ h1, h2 {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: 0.25rem;
-    background-color: #023671;
+    background-color: #02428b;
     color: #ffffff;
     margin-right: 10px;
 }
@@ -150,23 +150,20 @@ nav {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
 }
+  nav a {
+      color: #f2f2f5;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      font-weight: bold;
+  }
 
-/* Navigation links */
-nav a {
-    color: #023671;
-    text-decoration: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-
-nav a:hover, nav a.active {
-    background-color: #023671;
-    color: #ffffff;
-}
-
+  nav a:hover, nav a.active {
+      background-color: #02428b;
+      color: #ffffff;
+  }
 .hamburger {
     display: none;
     color: #ffffff;

@@ -1,15 +1,14 @@
           body {
               font-family: Arial, sans-serif;
-              background: 
+              background: #13161c;
 
-              linear-gradient(135deg, #0a0a0a 0%, #121212 50%, #1a1a1a 100%);
           background-attachment: fixed;              
           margin: 0;
               padding: 20px;
               padding-top: 50px;
           }
           h1, h2 {
-              color: #023671;
+              color: #f2f2f5;
           }
           .content-wrapper {
               display: flex;
@@ -28,7 +27,7 @@
               width: 100%;
           }
           .stock-info, .news {
-              background-color: #bfc0c0;
+              background-color: #21252e;
               padding: 20px;
               border-radius: 8px;
               box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -38,12 +37,13 @@
           }
           .price {
               font-size: 24px;
-              color: #023671;
+              font-weight: bold;
+              color: #f2f2f5;
           }
           .info-item {
               display: flex;
               justify-content: space-between;
-              background-color: #ffffff;
+              background-color: #4c5261;
               padding: 10px;
               border-radius: 5px;
               box-shadow: 0 2px 4px rgba(2, 54, 113, 0.1);
@@ -51,10 +51,10 @@
           }
           .info-label {
               font-weight: bold;
-              color: #023671;
+              color: #f2f2f5;
           }
           .info-value {
-              color: #000000;
+              color: #f2f2f5;
           }
           .news-item {
               margin-bottom: 20px;
@@ -62,43 +62,39 @@
           .news-item h3 {
               margin: 0;
               font-size: 18px;
-              color: #023671;
+              color: #f2f2f5;
           }
           .news-item p {
               margin: 5px 0;
-              color: #000000;
+              color: #f2f2f5;
           }
           a {
-              color: #023671;
+              color: #f2f2f5;
               text-decoration: none;
           }
           a:hover {
               text-decoration: underline;
           }
-          table {
-              width: 100%;
-              border-collapse: collapse;
-              margin: 20px 0;
-          }
+          
           table, th, td {
               border: 1px solid #bfc0c0;
               padding: 8px;
           }
           th {
-              background-color: #023671;
-              color: #ffffff;
+              background-color: #ffffff;
+              color: #f2f2f5;
               text-align: left;
           }
           td {
               text-align: right;
           }
           p {
-              color: #000000;
+              color: #f2f2f5;
           }
           .back-button {
               display: inline-block;
-              background-color: #023671;
-              color: #ffffff;
+              background-color: #ffffff;
+              color: #000000;
               padding: 10px 20px;
               text-decoration: none;
               border-radius: 5px;
@@ -108,7 +104,7 @@
           }
 
           .back-button:hover {
-              background-color: #034694;
+              background-color: #ffffff;
               text-decoration: none;
           }
           header {
@@ -133,48 +129,102 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
         }
+          nav a {
+              color: #f2f2f5;
+              text-decoration: none;
+              padding: 10px 20px;
+              margin: 0 5px;
+              border-radius: 5px;
+              transition: all 0.3s ease;
+              font-weight: bold;
+          }
 
-        nav a {
-            color: #023671;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 5px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            transition: all 0.3s ease;
+          nav a:hover, nav a.active {
+              background-color: #02428b;
+              color: #ffffff;
+          }
+           
 
-        }
 
-        nav a:hover, nav a.active {
-            background-color: #023671;
-            color: #ffffff;
-            text-decoration: none;
+form{
 
-            
-        }   
+  text-align: center;
+
+
+}
+
+.hamburger {
+  display: none;
+  color: #ffffff;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+@media screen and (max-width: 768px) {
+  
+
+ 
+
+  nav {
+      background-color: rgba(10, 10, 10, 0.8);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+  }
+
+  .hamburger {
+      display: block;
+  }
+
+  .nav-links {
+      display: none;
+  }
+
+  .nav-links.show {
+      display: block;
+  }
+
+  nav a {
+      display: block;
+      padding: 10px 15px;
+      text-align: left;
+  }
+
+  nav a:hover, nav a.active {
+      background-color: #034694;
+  }
+
+  
+}
+
         .ai-evaluation {
             width: 65%;
-            background-color: #bfc0c0;
+            background-color: #21252e;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         
         .ai-evaluation h2 {
-            color: #023671;
+            color: #f2f2f5;
             margin-bottom: 15px;
         }
         
         .ai-evaluation .info-item {
-            background-color: #ffffff;
+            background-color: #4c5261;
             padding: 15px;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(2, 54, 113, 0.1);
         }
         
         .ai-evaluation p {
-            color: #000000;
+            color: #f2f2f5;
             margin: 0;
         }
           
@@ -189,7 +239,7 @@
           
           .sentiment-box {
               flex: 1;
-              background-color: #bfc0c0;
+              background-color: #21252e;
               padding: 20px;
               border-radius: 8px;
               box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -201,14 +251,14 @@
           }
           
           .sentiment-box h3 {
-              color: #023671;
+              color: #f2f2f5;
               margin-bottom: 10px;
           }
           
           .sentiment-button {
               display: inline-block;
-              background-color: #023671;
-              color: #ffffff;
+              background-color: #f2f2f5;
+              color: #000000;
               padding: 10px 20px;
               border-radius: 5px;
               text-decoration: none;
@@ -217,6 +267,6 @@
           }
           
           .sentiment-button:hover {
-              background-color: #034694;
+              background-color: #e9e9f0;
           }
           

@@ -31,7 +31,7 @@ header {
 }
 
 header h1 {
-    color: #023671;
+    color: #ffffff;
     font-size: 48px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -82,7 +82,7 @@ nav {
     max-width: 90%;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: #2c2c2c;
+    background-color: #21252e;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -112,7 +112,7 @@ nav {
     width: 100%;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: #2c2c2c;
+    background-color: #21252e;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }.intro-text {
@@ -152,15 +152,15 @@ nav {
 }
 
 h2 {
-    color: #023671;
+    color: #ffffff;
     font-size: 32px;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid #023671;
+    border-bottom: 2px solid #ffffff;
     padding-bottom: 0.5rem;
 }
 
 .feature-list h3 {
-    color: #023671;
+    color: #ffffff;
     font-size: 24px;
     margin-bottom: 0.75rem;
 }
@@ -203,21 +203,21 @@ nav {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
 }
+  nav a {
+      color: #f2f2f5;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      font-weight: bold;
+  }
 
-nav a {
-    color: #023671;
-    text-decoration: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-
-nav a:hover, nav a.active {
-    background-color: #023671;
-    color: #ffffff;
-}   
+  nav a:hover, nav a.active {
+      background-color: #02428b;
+      color: #ffffff;
+  }
+   
   .page-container {
       width: 90%;
       max-width: 1100px;
@@ -228,7 +228,7 @@ nav a:hover, nav a.active {
     width: 100%;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: #2c2c2c;
+    background-color: #21252e;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -242,27 +242,27 @@ nav a:hover, nav a.active {
 }
 
 .contact-info h2, .contact-form h2 {
-    color: #004ba0;
+    color: #ffffff;
 }
 
 .contact-info p, .contact-info ul {
-    color: #004ba0;
+    color: #ffffff;
 }
 
 .contact-info ul {
     list-style-type: none;
     padding: 0;
-    color: #004ba0;
+    color: #ffffff;
 }
 
 .contact-info li {
     margin-bottom: 0.5rem;
-    color: #004ba0;
+    color: #ffffff;
 }
 
 .cta-button {
     display: inline-block;
-    background-color: #023671;
+    background-color: #ffffff;
     color: #c4c7ce;
     padding: 10px 20px;
     border-radius: 25px;
@@ -283,7 +283,7 @@ nav a:hover, nav a.active {
   }
 
   .contact-form label {
-      color: #023671;
+      color: #ffffff;
       font-size: 18px;
       margin-bottom: 0.25rem;
   }
@@ -293,9 +293,8 @@ nav a:hover, nav a.active {
   .contact-form textarea {
       width: 100%;
       padding: 0.5rem;
-      border: 2px solid #023671;
       border-radius: 4px;
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(56, 53, 53, 0.815);
       color: #ffffff;
       font-size: 16px;
       margin-bottom: 1rem;
@@ -305,12 +304,12 @@ nav a:hover, nav a.active {
   .contact-form input[type="email"]:focus,
   .contact-form textarea:focus {
       outline: none;
-      border-color: #004ba0;
+      border-color: #ffffff;
       box-shadow: 0 0 0 2px rgba(2, 54, 113, 0.2);
   }
 
   .contact-form input[type="submit"] {
-      background-color: #023671;
+      background-color: #02428b;
       color: #ffffff;
       border: none;
       padding: 0.75rem 1.5rem;
@@ -325,24 +324,26 @@ nav a:hover, nav a.active {
       
 
   .contact-form input[type="submit"]:hover {
-      background-color: #004ba0;
+      background-color: #0c5ab3;
   }
 
   #confirmation-message {
-      background-color: #023671;
-      color: #ffffff;
-      padding: 1rem;
-      border-radius: 4px;
-      text-align: center;
-      margin-top: 1rem;
-  }
+    display: none;
+    background-color: #21252e;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 20px;
+
+}
 
   footer {
       text-align: center;
       padding: 1rem 0;
       margin-top: 2rem;
       background-color: #2c2c2c;
-      color: #023671;
+      color: #ffffff;
       width: 100%;
   }
 /* Add these new styles to your existing style2.css file */
@@ -414,16 +415,7 @@ nav a:hover, nav a.active {
     
     transform 0.3s ease;
 }
-#confirmation-message {
-    display: none;
-    background-color: #023671;
-    color: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 20px;
 
-}
 
 
 

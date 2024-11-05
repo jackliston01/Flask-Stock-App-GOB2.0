@@ -68,7 +68,7 @@ def sentiment():
     ticker = request.args.get('ticker') or request.form.get('ticker')
     if ticker:
         ticker = ticker.upper()
-        url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={ticker}&apikey=2E2UKJACTXKS62YA'
+        url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={ticker}&apikey=DJW11H5BHJ62KGHT'
         r = requests.get(url)
         data = r.json()
         
