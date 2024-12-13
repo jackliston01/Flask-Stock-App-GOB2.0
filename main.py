@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, flash, send_from_directory
+from flask import Flask, request, render_template, redirect, url_for, flash, send_from_directory, session
 import google.generativeai as genai
 import os
 import requests
@@ -9,11 +9,11 @@ genai.configure(api_key=os.environ['gemapi'])
 
 
 app = Flask(__name__)
+app.secret_key = 'test'
 
 
 
 
-@app.route('/', methods=['GET', 'POST'])
 @app.route('/', methods=['GET', 'POST'])
 def home():
     try:
@@ -22,12 +22,16 @@ def home():
             return redirect(url_for('show_price', ticker=ticker))
         return render_template('home.html')
     except Exception as e:
-        print(f"Error in home(): {str(e)}")  # This will print the specific error
+        print(f"Error in home(): {str(e)}") 
         return f"An error occurred: {str(e)}", 500
 
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+
+
+
 
 @app.route('/docanalysis', methods=['GET', 'POST'])
 def docanalysis():
@@ -37,17 +41,32 @@ def docanalysis():
         file = request.files['file']
         if file:
             file.save(file.filename)
-            
             try:
                 sample_file = genai.upload_file(path=file.filename, display_name="Gemini PDF")
                 
-                model = genai.GenerativeModel(model_name="gemini-1.5-flash")
-                response = model.generate_content([sample_file, "Can you summarize this document as a bulleted list?"])
+                bullet_points = request.form.get('bullet_points') == 'true'
+                include_highlights = request.form.get('include_highlights') == 'true'
+                condense = request.form.get('condense') == 'true'
+                custom_prompt = request.form.get('custom_prompt', '').strip()
                 
-                summary = response.text.replace('\n', '<br>')  
+                prompt = "Please summarize this document"
+                if bullet_points:
+                    prompt += " and format the response as bullet points"
+                if include_highlights:
+                    prompt += ", including a key insight section"
+                if prompt:
+                    prompt += "make your summary much shorter"
+                if custom_prompt:
+                    prompt += f". Additional instructions: {custom_prompt}"
+                
+                model = genai.GenerativeModel(model_name="gemini-1.5-flash")
+                response = model.generate_content([sample_file, prompt])
+                
+                summary = response.text.replace('\n', '<br>')
 
             except Exception as e:
                 summary = f"An error occurred: {str(e)}"
+            
     
     return render_template('docanalysis.html', summary=summary)
 

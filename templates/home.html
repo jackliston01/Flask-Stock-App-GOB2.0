@@ -7,9 +7,9 @@
     <title>GOB 2.0 - LBHS</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
-<link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
 </head>
 <body>
     <nav>
@@ -23,13 +23,21 @@
         </div>
     </nav>
 
-
     <h1 id="main-title">MEF Analysis Engine</h1>
     <h1>"The Best in the Game"</h1>
     <form method="post">
         <input type="text" name="ticker" placeholder="Enter Stock Ticker" required>
         <button type="submit">Get Stock Info</button>
     </form>
+
+    <!-- New example buttons section -->
+    <div class="example-buttons">
+        <form method="post" style="display: inline;">
+            <input type="hidden" name="ticker" value="AAPL">
+            <button type="submit" class="example-btn">Try AAPL (Apple)</button>
+        </form>
+        
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -40,11 +48,6 @@
                 navLinks.classList.toggle('show');
             });
         });
-        document.addEventListener('DOMContentLoaded', function() {
-            // ... (existing hamburger menu script) ...
-
-            });
-      
     </script>
 </body>
 </html>

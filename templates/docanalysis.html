@@ -22,34 +22,65 @@
     </nav>
     <div class="container">
         <h1>Upload a PDF to Summarize</h1>
-    
+          <form action="{{ url_for('docanalysis') }}" method="POST" enctype="multipart/form-data" id="upload-form">
+              <div class="file-input-wrapper">
+                  <input type="file" name="file" id="file" accept="application/pdf" required>
+                  <label for="file">Choose a PDF file</label>
+              </div>
+              <div class="file-name" id="file-name"></div>
+            
+              <!-- New input options -->
+              <div class="analysis-options">
+                  <div class="checkbox-group">
+                      <input type="checkbox" id="bullet_points" name="bullet_points" value="true">
+                      <label for="bullet_points">Format as bullet points</label>
+                  </div>
+                
+                  <div class="checkbox-group">
+                      <input type="checkbox" id="include_highlights" name="include_highlights" value="true">
+                      <label for="include_highlights">Include a key insight section</label>
+                  </div>
+                  <div class="checkbox-group">
+                      <input type="checkbox" id="condense" name="condense" value="true">
+                      <label for="condense">Make the summary short</label>
+                  </div>
+                
+                  <div class="text-input-group">
+                      <label for="custom_prompt">Custom Analysis Instructions (optional):</label>
+                      <input type="text" id="custom_prompt" name="custom_prompt" placeholder="E.g., Focus on financial data...">
+                  </div>
+              </div>
+            
+              <button type="submit" id="submit-btn">Upload and Analyze</button>
+          </form>
+        
+          <!-- Add this after the form -->
+          <div class="loading-container" id="loading">
+              <div class="loading-spinner"></div>
+              <div class="loading-text">Analyzing your document...</div>
+          </div>
 
-        <form action="{{ url_for('docanalysis') }}" method="POST" enctype="multipart/form-data">
-            <div class="file-input-wrapper">
-                <input type="file" name="file" id="file" accept="application/pdf" required>
-                <label for="file">Choose a PDF file</label>
-            </div>
-            <div class="file-name" id="file-name"></div>
-            <button type="submit">Upload and Summarize</button>
-        </form>
+          {% if summary %}
+              <div class="summary-container">
+                  <h2>Document Summary</h2>
+                  <div class="summary-content">
+                      {{ summary | safe }}
+                  </div>
+              </div>
+              {% endif %}
+            
+      <script>
+          document.getElementById('upload-form').addEventListener('submit', function() {
+              document.getElementById('loading').style.display = 'block';
+              document.getElementById('submit-btn').disabled = true;
+          });
 
-        {% if summary %}
-            <div class="summary-container">
-                <h2>Document Summary</h2>
-                <div class="summary-content">
-                    {{ summary | safe }}
-                </div>
-            </div>
-        {% endif %}
-    </div>
-
-    <script>
-        document.getElementById('file').addEventListener('change', function() {
-            var fileName = this.files[0].name;
-            document.getElementById('file-name').textContent = fileName;
-        });
-    </script>
-</body>
+          document.getElementById('file').addEventListener('change', function() {
+              var fileName = this.files[0].name;
+              document.getElementById('file-name').textContent = fileName;
+          });
+      </script>
+  </body>
 </html>
 
     <script>
